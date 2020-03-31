@@ -1,0 +1,32 @@
+* {
+    font-family: Arial;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #EAE7DC;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #E85A4F;
+}
+
+li {
+    float: left;
+    border-right: 3px solid #E98074;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #E98074;
+}
