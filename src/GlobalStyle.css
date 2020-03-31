@@ -1,11 +1,12 @@
 * {
     font-family: Arial;
+    color: #35393C;
 }
 
 body {
     padding: 0;
     margin: 0;
-    background-color: #EAE7DC;
+    background-color: #E1F4CB;
 }
 
 ul {
@@ -13,20 +14,21 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #E85A4F;
+    background-color: #5B8C5A;
 }
 
 li {
     float: left;
-    border-right: 3px solid #E98074;
+    border-right: 3px solid #94A582;
 }
 li a {
     display: block;
     color: white;
+    font-size: 18px;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 li a:hover {
-    background-color: #E98074;
+    background-color: #94A582;
 }
