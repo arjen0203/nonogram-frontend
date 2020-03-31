@@ -1,6 +1,5 @@
-div {
-    border: 2px solid #999;
-    float: left;
+.square {
+    border: 2px solid #35393C;
     height: 34px;
     margin-right: -1px;
     margin-top: -1px;
