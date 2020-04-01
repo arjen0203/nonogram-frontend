@@ -3,7 +3,7 @@ import Puzzle from "./Puzzle";
 
 class Solving extends React.Component {
     render() {
-        const top = [[1, 2, 3], [2, 3], [3], [3]];
+        const top = [[1, 2, 3], [2, 3], [3], [3], [3]];
         const side = [[3,2,1], [2,1], [1]];
 
         return (
