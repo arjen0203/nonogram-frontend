@@ -42,7 +42,11 @@ class Puzzle extends React.Component {
             for (var j = 0; j < x; j++){
                 const x = i;
                 const y = j;
-                row.push(<Square value={this.props.solveState[i][j]} onClick={() => this.handleClick(x, y)}></Square>);
+                row.push(<Square value={this.props.solveState[i][j]}
+                                 onClick={(e) => this.onClick(x, y, e)}
+                                 onContextMenu={(e) => this.onClick(x, y, e)}
+                                 onMouseEnter={(e) => this.onClick(x, y, e)}
+                ></Square>);
             }
             items.push(<div className={PuzzleStyle.row}> {row} </div>);
         }
@@ -50,12 +54,19 @@ class Puzzle extends React.Component {
         return (<div>{items}</div>);
     }
 
-    handleClick(i,j, e) {
-        console.log(e);
+    onClick(i,j,e) {
+        e.preventDefault();
 
         const solveState = this.props.solveState.slice();
-        if (solveState[i][j] === 1) solveState[i][j] = 0;
-        else solveState[i][j] = 1;
+
+        if (e.nativeEvent.which === 1) {
+            if (solveState[i][j] === 1) solveState[i][j] = 0;
+            else solveState[i][j] = 1;
+        } else if (e.nativeEvent.which === 3) {
+            if (solveState[i][j] === 2) solveState[i][j] = 0;
+            else solveState[i][j] = 2;
+        }
+
         this.setState({solveState: solveState});
     }
 
