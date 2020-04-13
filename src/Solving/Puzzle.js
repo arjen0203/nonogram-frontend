@@ -50,9 +50,12 @@ class Puzzle extends React.Component {
         return (<div>{items}</div>);
     }
 
-    handleClick(i,j) {
+    handleClick(i,j, e) {
+        console.log(e);
+
         const solveState = this.props.solveState.slice();
-        solveState[i][j] = 1;
+        if (solveState[i][j] === 1) solveState[i][j] = 0;
+        else solveState[i][j] = 1;
         this.setState({solveState: solveState});
     }
 
