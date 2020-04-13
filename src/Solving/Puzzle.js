@@ -43,15 +43,19 @@ class Puzzle extends React.Component {
                 const x = i;
                 const y = j;
                 row.push(<Square value={this.props.solveState[i][j]}
-                                 onClick={(e) => this.onClick(x, y, e)}
-                                 onContextMenu={(e) => this.onClick(x, y, e)}
-                                 onMouseEnter={(e) => this.onClick(x, y, e)}
+                                 onMouseDown={(e) => this.onClick(x, y, e)}
+                                 onContextMenu={(e) => this.noContextMenu(e)}
+                                 onMouseEnter={(e) => this.onDrag(x, y, e)}
                 ></Square>);
             }
             items.push(<div className={PuzzleStyle.row}> {row} </div>);
         }
 
         return (<div>{items}</div>);
+    }
+
+    noContextMenu(e){
+        e.preventDefault();
     }
 
     onClick(i,j,e) {
@@ -65,6 +69,20 @@ class Puzzle extends React.Component {
         } else if (e.nativeEvent.which === 3) {
             if (solveState[i][j] === 2) solveState[i][j] = 0;
             else solveState[i][j] = 2;
+        }
+
+        this.setState({solveState: solveState});
+    }
+
+    onDrag(i,j,e) {
+        e.preventDefault();
+
+        const solveState = this.props.solveState.slice();
+
+        if (e.nativeEvent.which === 1) {
+            if (solveState[i][j] === 0) solveState[i][j] = 1;
+        } else if (e.nativeEvent.which === 3) {
+            if (solveState[i][j] === 0) solveState[i][j] = 2;
         }
 
         this.setState({solveState: solveState});

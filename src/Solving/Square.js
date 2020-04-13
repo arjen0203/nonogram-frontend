@@ -14,7 +14,7 @@ class Square extends React.Component {
             <div
                 className={SquareStyle.square}
                 style={filled}
-                onClick={(e) => this.props.onClick(e)}
+                onMouseDown={(e) => this.props.onMouseDown(e)}
                 onContextMenu={(e) => this.props.onContextMenu(e)}
                 onMouseEnter={(e) => this.props.onMouseEnter(e)}
             >
