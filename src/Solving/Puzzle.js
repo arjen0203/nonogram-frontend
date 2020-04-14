@@ -145,7 +145,6 @@ class Puzzle extends React.Component {
             }
         }
         if (counter !== 0) currentFIllRow.push(counter);
-        console.log(currentFIllRow);
 
         for (var l = 0; l < numbersSide.length; l++) {
             if (currentFIllRow[l] === numbersSide[l][0] && currentFIllRow.length <= numbersSide.length) {
@@ -162,7 +161,6 @@ class Puzzle extends React.Component {
         for(var x = 0; x < this.props.topRow.length; x++){
             for (var i = 0; i < this.props.topRow[x].length; i++){
                 if (this.props.topRow[x][i][1] === false) {
-                    console.log("yes");
                     return;
                 }
             }
