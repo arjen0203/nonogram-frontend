@@ -1,0 +1,55 @@
+.ToBeSolvedTop {
+    border-left: 2px solid #35393C;
+    border-right: 2px solid #35393C;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #35393C;
+    height: 34px;
+    margin: -1px;
+    padding: 0;
+    width: 34px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.SolvedTop {
+    border-left: 2px solid #5C6469;
+    border-right: 2px solid #5C6469;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(53, 57, 60, 0.25);
+    height: 34px;
+    margin: -1px;
+    padding: 0;
+    width: 34px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.ToBeSolvedSide {
+    border-top: 2px solid #35393C;
+    border-bottom: 2px solid #35393C;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #35393C;
+    height: 34px;
+    margin: -1px;
+    padding: 0;
+    width: 34px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.SolvedSide {
+    border-top: 2px solid #5C6469;
+    border-bottom: 2px solid #5C6469;
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(53, 57, 60, 0.25);
+    height: 34px;
+    margin: -1px;
+    padding: 0;
+    width: 34px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 32px;
+}

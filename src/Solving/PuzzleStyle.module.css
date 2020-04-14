@@ -1,0 +1,12 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 50vw;
+}
+
+.topNumberColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

@@ -15,7 +15,7 @@ function App() {
           </nav>
           <Switch>
             <Route path='/creating' component={Creating} />
-              <Route path='/' component={Solving} />
+            <Route path='/' component={Solving} />
           </Switch>
       </Router>
   );
