@@ -3,8 +3,8 @@ import Puzzle from "./Puzzle";
 
 class Solving extends React.Component {
     render() {
-        const top = [[1], [5], [2], [5], [2,1], [2]];
-        const side = [[2,1], [1,3], [1,2], [3], [4], [1]];
+        const top = [[[1, false]], [[5, false]], [[2, false]], [[5, false]], [[2, false],[1, false]], [[2, false]]];
+        const side = [[[2, false],[1, false]], [[1,false],[3,false]], [[1,false],[2,false]], [[3,false]], [[4,false]], [[1,false]]];
 
         const progress = [[0,0,0,0,0,0],
                           [0,0,0,0,0,0],

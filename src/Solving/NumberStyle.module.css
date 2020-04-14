@@ -16,7 +16,7 @@
     border-left: 2px solid #5C6469;
     border-right: 2px solid #5C6469;
     background-color: rgba(0, 0, 0, 0.08);
-    color: #35393C;
+    color: rgba(53, 57, 60, 0.25);
     height: 34px;
     margin: -1px;
     padding: 0;
@@ -44,7 +44,7 @@
     border-top: 2px solid #5C6469;
     border-bottom: 2px solid #5C6469;
     background-color: rgba(0, 0, 0, 0.08);
-    color: #35393C;
+    color: rgba(53, 57, 60, 0.25);
     height: 34px;
     margin: -1px;
     padding: 0;
