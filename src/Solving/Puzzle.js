@@ -5,8 +5,15 @@ import TopNumber from "./TopNumber";
 import SideNumber from "./SideNumber";
 
 class Puzzle extends React.Component {
+    constructor(props) {
+        super(props);
+
+        //this.state
+        //nonogram = this.props.nonogram;
+    }
 
     createBoxes() {
+
         const x = this.props.topRow.length;
         const y = this.props.sideRow.length;
 

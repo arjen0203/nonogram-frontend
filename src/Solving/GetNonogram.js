@@ -5,6 +5,8 @@ class GetNonogram extends React.Component {
     state = {
         loasding: true,
         nonogram: null,
+        topRow: [[]],
+        sideRow: [[]],
     };
 
 
@@ -13,14 +15,31 @@ class GetNonogram extends React.Component {
         const response = await fetch(URL);
         const data = await  response.json();
         console.log(data);
-        this.setState({nonogram : data.result});
+        this.setState({nonogram: data , loading: false});
+    }
+
+    setRows(topRow, sideRow){
+        var newTopRow = [];
+
+        for (var i = 0; i < topRow.length; i++){
+            for (var j = 0; j < topRow[i].length; j++)
+                newTopRow[i][j].push([topRow[i][j], false]);
+        }
+        console.log(newTopRow);
     }
 
     render() {
+        const progress = [[0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]];
+
         return (
             <div>
                 {this.state.loading || !this.state.nonogram ? (
-                    <b>loading...</b>
+                    <div></div>
                     ) : (
                         <Puzzle topRow={this.state.nonogram.topRow} sideRow={this.state.nonogram.sideRow} solveState={progress}> </Puzzle>
                 )}
