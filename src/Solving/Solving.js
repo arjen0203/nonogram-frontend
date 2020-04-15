@@ -1,5 +1,6 @@
 import React from "react";
 import Puzzle from "./Puzzle";
+import GetNonogram from "./GetNonogram";
 
 class Solving extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class Solving extends React.Component {
                     This is the solving page!
                 </h1>
                 <Puzzle topRow={top} sideRow={side} solveState={progress}></Puzzle>
+                <GetNonogram></GetNonogram>
             </div>
         );
     }
