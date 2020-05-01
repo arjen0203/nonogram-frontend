@@ -23,8 +23,9 @@ class GetNonogram extends React.Component {
 
         for (var i = 0; i < topRow.length; i++){
             for (var j = 0; j < topRow[i].length; j++)
-                newTopRow[i][j].push([topRow[i][j], false]);
+                newTopRow[i][j].push({number: topRow[i][j], holds: false});
         }
+
         console.log(newTopRow);
     }
 

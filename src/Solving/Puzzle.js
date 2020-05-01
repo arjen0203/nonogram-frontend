@@ -72,34 +72,39 @@ class Puzzle extends React.Component {
 
         const solveState = this.props.solveState.slice();
 
+        var importantChange = false;
+
         if (e.nativeEvent.which === 1) {
             if (solveState[x][y] === 1) solveState[x][y] = 0;
             else solveState[x][y] = 1;
-            this.checkNumbers(x, y);
+            importantChange = true;
         } else if (e.nativeEvent.which === 3) {
             if (solveState[x][y] === 2) {
                 solveState[x][y] = 0;
             }
             else if (solveState[x][y] === 1) {
                 solveState[x][y] = 2;
-                this.checkNumbers(x, y);
+                importantChange = true;
             } else {
                 solveState[x][y] = 2;
             }
-
         }
 
         this.setState({solveState: solveState});
+
+        if (importantChange) this.checkNumbers(x, y);
     }
 
     onDrag(x,y,e) {
         e.preventDefault();
 
+        var importantChange = false;
+
         const solveState = this.props.solveState.slice();
 
         if (e.nativeEvent.which === 1 && solveState[x][y] === 0) {
             solveState[x][y] = 1;
-            this.checkNumbers(x, y);
+            importantChange = true;
         } else if (e.nativeEvent.which === 3 && solveState[x][y] === 0) {
             solveState[x][y] = 2;
         } else {
@@ -107,6 +112,8 @@ class Puzzle extends React.Component {
         }
 
         this.setState({solveState: solveState});
+
+        if (importantChange) this.checkNumbers(x, y);
     }
 
     checkNumbers(y,x) {
@@ -131,10 +138,10 @@ class Puzzle extends React.Component {
         }
 
         for (var k = 0; k < numbersTop.length; k++) {
-            if (currentFIllColumn[k] === numbersTop[k][0] && currentFIllColumn.length <= numbersTop.length) {
-                numbersTop[k][1] = true;
+            if (currentFIllColumn[k] === numbersTop[k].number && currentFIllColumn.length <= numbersTop.length) {
+                numbersTop[k].holds = true;
             } else {
-                numbersTop[k][1] = false;
+                numbersTop[k].holds = false;
                 allTrue = false;
             }
         }
@@ -154,10 +161,10 @@ class Puzzle extends React.Component {
         if (counter !== 0) currentFIllRow.push(counter);
 
         for (var l = 0; l < numbersSide.length; l++) {
-            if (currentFIllRow[l] === numbersSide[l][0] && currentFIllRow.length <= numbersSide.length) {
-                numbersSide[l][1] = true;
+            if (currentFIllRow[l] === numbersSide[l].number && currentFIllRow.length <= numbersSide.length) {
+                numbersSide[l].holds = true;
             } else {
-                numbersSide[l][1] = false;
+                numbersSide[l].holds = false;
                 allTrue = false;
             }
         }
@@ -167,14 +174,14 @@ class Puzzle extends React.Component {
     checkSolved() {
         for(var x = 0; x < this.props.topRow.length; x++){
             for (var i = 0; i < this.props.topRow[x].length; i++){
-                if (this.props.topRow[x][i][1] === false) {
+                if (this.props.topRow[x][i].holds === false) {
                     return;
                 }
             }
         }
         for(var y = 0; y < this.props.sideRow.length; y++){
             for (var j = 0; j < this.props.sideRow[y].length; j++){
-                if (this.props.sideRow[y][j][1] === false) return;
+                if (this.props.sideRow[y][j].holds === false) return;
             }
         }
         alert("YOU SOLVED IT!!!!");

@@ -4,8 +4,8 @@ import GetNonogram from "./GetNonogram";
 
 class Solving extends React.Component {
     render() {
-        const top = [[[1, false]], [[5, false]], [[2, false]], [[5, false]], [[2, false],[1, false]], [[2, false]]];
-        const side = [[[2, false],[1, false]], [[1,false],[3,false]], [[1,false],[2,false]], [[3,false]], [[4,false]], [[1,false]]];
+        const top = [[{number: 1, holds: false}], [{number: 5, holds: false}], [{number: 2, holds: false}], [{number: 5, holds: false}], [{number: 2, holds: false},{number: 1, holds: false}], [{number: 2, holds: false}]];
+        const side = [[{number: 2, holds: false},{number: 1, holds: false}], [{number: 1, holds: false},{number: 3, holds: false}], [{number: 1, holds: false},{number: 2, holds: false}], [{number: 3, holds: false}], [{number: 4, holds: false}], [{number: 1, holds: false}]];
 
         const progress = [[0,0,0,0,0,0],
                           [0,0,0,0,0,0],
