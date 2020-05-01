@@ -4,45 +4,63 @@ import Puzzle from "./Puzzle";
 class GetNonogram extends React.Component {
     state = {
         loasding: true,
-        nonogram: null,
-        topRow: [[]],
-        sideRow: [[]],
+        solveState: null,
+        topRow: null,
+        sideRow: null,
     };
 
 
     async componentDidMount() {
         const URL = "http://localhost:8080/nonogram";
         const response = await fetch(URL);
-        const data = await  response.json();
-        console.log(data);
-        this.setState({nonogram: data , loading: false});
+        const data = await response.json();
+        this.setRows(data.topRow, data.sideRow);
     }
 
     setRows(topRow, sideRow){
         var newTopRow = [];
 
-        for (var i = 0; i < topRow.length; i++){
-            for (var j = 0; j < topRow[i].length; j++)
-                newTopRow[i][j].push({number: topRow[i][j], holds: false});
+        for (let i = 0; i < topRow.length; i++){
+            newTopRow.push([])
+            for (let j = 0; j < topRow[i].length; j++){
+                let isZero = false;
+                if (topRow[i][j] === 0) isZero = true;
+                newTopRow[i].push({number: topRow[i][j], holds: isZero});
+            }
         }
 
-        console.log(newTopRow);
+        var newSideRow = [];
+
+        for (let i = 0; i < sideRow.length; i++){
+            newSideRow.push([])
+            for (let j = 0; j < sideRow[i].length; j++){
+                let isZero = false;
+                if (sideRow[i][j] === 0) isZero = true;
+                newSideRow[i].push({number: sideRow[i][j], holds: isZero});
+            }
+        }
+
+        var newSolveState = [];
+
+        for (let i = 0; i < sideRow.length; i++){
+            newSolveState.push([])
+            for (let j = 0; j < topRow.length; j++){
+                newSolveState[i].push(0);
+            }
+        }
+
+        console.log(newSolveState);
+
+        this.setState({topRow: newTopRow, sideRow: newSideRow, solveState: newSolveState, loading: false});
     }
 
     render() {
-        const progress = [[0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0],
-            [0,0,0,0,0,0]];
-
         return (
             <div>
-                {this.state.loading || !this.state.nonogram ? (
+                {this.state.loading || !this.state.solveState ? (
                     <div></div>
                     ) : (
-                        <Puzzle topRow={this.state.nonogram.topRow} sideRow={this.state.nonogram.sideRow} solveState={progress}> </Puzzle>
+                        <Puzzle topRow={this.state.topRow} sideRow={this.state.sideRow} solveState={this.state.solveState}> </Puzzle>
                 )}
             </div>
         );

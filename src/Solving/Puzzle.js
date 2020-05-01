@@ -5,13 +5,6 @@ import TopNumber from "./TopNumber";
 import SideNumber from "./SideNumber";
 
 class Puzzle extends React.Component {
-    constructor(props) {
-        super(props);
-
-        //this.state
-        //nonogram = this.props.nonogram;
-    }
-
     createBoxes() {
 
         const x = this.props.topRow.length;
@@ -132,7 +125,8 @@ class Puzzle extends React.Component {
                 counter = 0;
             }
         }
-        if (counter !== 0) {
+
+        if (counter !== 0 || currentFIllColumn.length === 0) {
             currentFIllColumn.push(counter);
             counter = 0;
         }
@@ -158,7 +152,8 @@ class Puzzle extends React.Component {
                 counter = 0;
             }
         }
-        if (counter !== 0) currentFIllRow.push(counter);
+        if (counter !== 0 || currentFIllRow.length === 0) currentFIllRow.push(counter);
+
 
         for (var l = 0; l < numbersSide.length; l++) {
             if (currentFIllRow[l] === numbersSide[l].number && currentFIllRow.length <= numbersSide.length) {
