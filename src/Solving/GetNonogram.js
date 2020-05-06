@@ -11,7 +11,7 @@ class GetNonogram extends React.Component {
 
 
     async componentDidMount() {
-        const URL = "http://nonograms.nl/api/nonogram";
+        const URL = "https://nonograms.nl/api/nonogram";
         const response = await fetch(URL);
         const data = await response.json();
         this.setRows(data.topRow, data.sideRow);
