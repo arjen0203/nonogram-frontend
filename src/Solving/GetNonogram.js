@@ -2,10 +2,6 @@ import React from "react";
 import Puzzle from "./Puzzle";
 
 class GetNonogram extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     state = {
         loading: true,
         solveState: null,

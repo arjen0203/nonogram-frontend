@@ -5,7 +5,6 @@ class Square extends React.Component {
     render() {
         var display;
         if (this.props.value === 1){
-            // display = "⯀";
             var filled = { backgroundColor: '#35393C'};
         } else if (this.props.value === 2){
             display = "✖";
