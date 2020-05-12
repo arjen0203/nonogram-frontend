@@ -15,6 +15,7 @@ class Options extends Component {
                         <input className="size-input" type="number" id="Height" name="quantity" min="2" max="100"
                                value={this.props.height} onChange={(e) => this.props.changeHeight(e.target.value)}></input>
                     </div>
+                    <button className="save-button">Save nonogram</button>
                 </div>
             </div>
         );

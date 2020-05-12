@@ -10,19 +10,55 @@ class Creating extends React.Component {
         this.state = {
             width: 10,
             height: 10,
-            name: ''
+            name: '',
+            pictureGrid: this.getPictureGrid(10, 10)
         };
     }
 
+    getPictureGrid(x, y) {
+        var pictureGrid = [];
+        for (let i = 0; i < x; i++) {
+            pictureGrid.push([])
+            for (let j = 0; j < y; j++) {
+                pictureGrid[i].push(0);
+            }
+        }
+        return pictureGrid;
+    }
+
+    onClick(x, y, e){
+        e.preventDefault();
+
+        const pictureGrid = this.state.pictureGrid.slice();
+
+        if (pictureGrid[x][y] === 1) pictureGrid[x][y] = 0;
+        else pictureGrid[x][y] = 1;
+
+        this.setState({pictureGrid});
+    }
+
+    onDrag(x, y, e){
+        e.preventDefault();
+
+        const pictureGrid = this.state.pictureGrid.slice();
+
+        if (e.nativeEvent.which === 1 && pictureGrid[x][y] === 0) pictureGrid[x][y] = 1;
+
+        this.setState({pictureGrid});
+    }
+
     changeWidth(width) {
-        this.setState({width});
+        let pictureGrid = this.getPictureGrid(width, this.state.height);
+        this.setState({width, pictureGrid});
     }
 
     changeHeight(height) {
-        this.setState({height});
+        let pictureGrid = this.getPictureGrid(this.state.width, height);
+        this.setState({height, pictureGrid});
     }
     changeName(name) {
-        this.setState({name});
+        let pictureGrid = this.getPictureGrid(this.state.width, this.state.height);
+        this.setState({name, pictureGrid});
     }
 
     render() {
@@ -32,9 +68,10 @@ class Creating extends React.Component {
                     This is the creating page!
                 </h1>
                 <form>
-                    <DrawingGrid width={this.state.width} height={this.state.height}></DrawingGrid>
                     <Options changeWidth={(e) => this.changeWidth(e)} changeHeight={(e) => this.changeHeight(e)} changeName={(e) => this.changeName(e)}
                              width={this.state.width} height={this.state.height} name={this.state.name} ></Options>
+                    <DrawingGrid width={this.state.width} height={this.state.height} pictureGrid={this.state.pictureGrid}
+                    onClick={(x, y, e) => this.onClick(x, y, e)} onDrag={(x, y, e) => this.onDrag(x, y, e)}></DrawingGrid>
                 </form>
             </div>
         );

@@ -10,6 +10,7 @@
         padding: 10px;
         max-width: 400px;
         border-radius: 3px;
+        margin-bottom: 20px;
 
         .size-input {
             padding: 2px;
@@ -22,5 +23,46 @@
             padding: 2px;
             margin-bottom: 10px;
         }
+
+        .save-button {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 5px;
+            background-color: #5B8C5A;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+                &:hover {
+                    background-color: #94A582;
+                }
+                &:active {
+                    position:relative;
+                    top:1px;
+                }
+        }
+    }
+
+    .drawing-grid {
+        margin-bottom: 20px;
+
+        .draw-row {
+
+            .draw-square {
+                border: 2px solid #35393C;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                color: #35393C;
+                text-align: center;
+                font-size: 35px;
+                line-height: 36px;
+                user-select: none;
+                float: left;
+            }
+
+        }
+
     }
 }
