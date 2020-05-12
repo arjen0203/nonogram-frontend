@@ -1,5 +1,4 @@
 import React from "react";
-import Puzzle from "./Puzzle";
 import GetNonogram from "./GetNonogram";
 
 class Solving extends React.Component {
@@ -9,7 +8,7 @@ class Solving extends React.Component {
                 <h1>
                     This is the solving page!
                 </h1>
-                <GetNonogram></GetNonogram>
+                <GetNonogram id={this.props.match.params.id}></GetNonogram>
             </div>
         );
     }
