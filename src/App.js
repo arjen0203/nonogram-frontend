@@ -9,7 +9,7 @@ function App() {
       <Router className={GlobalStyle}>
           <nav>
             <ul>
-              <li><Link to={'/solving'}>Solving</Link></li>
+              <li><Link to={'/solving/100'}>Solving</Link></li>
               <li><Link to={'/creating'} >Creating</Link></li>
             </ul>
           </nav>

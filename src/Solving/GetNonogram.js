@@ -52,8 +52,6 @@ class GetNonogram extends React.Component {
             }
         }
 
-        console.log(newSolveState);
-
         this.setState({topRow: newTopRow, sideRow: newSideRow, solveState: newSolveState, loading: false});
     }
 
