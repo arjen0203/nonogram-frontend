@@ -2,19 +2,22 @@ import React from "react";
 import Puzzle from "./Puzzle";
 
 class GetNonogram extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     state = {
-        loasding: true,
+        loading: true,
         solveState: null,
         topRow: null,
         sideRow: null,
     };
 
-
     async componentDidMount() {
-        const URL = "https://nonograms.nl/api/nonogram";
+        const URL = 'https://nonograms.nl/api/nonogram/get?id=' + this.props.id;
         const response = await fetch(URL);
         const data = await response.json();
-        this.setRows(data.topRow, data.sideRow);
+        this.setRows(data.topValues, data.sideValues);
     }
 
     setRows(topRow, sideRow){

@@ -9,13 +9,13 @@ function App() {
       <Router className={GlobalStyle}>
           <nav>
             <ul>
-              <li><Link to={'/'}>Solving</Link></li>
+              <li><Link to={'/solving'}>Solving</Link></li>
               <li><Link to={'/creating'} >Creating</Link></li>
             </ul>
           </nav>
           <Switch>
-            <Route path='/creating' component={Creating} />
-            <Route path='/' component={Solving} />
+            <Route exact path='/creating' component={Creating} />
+            <Route exact path='/solving/:id' component={Solving} />
           </Switch>
       </Router>
   );
