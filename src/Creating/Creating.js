@@ -1,6 +1,7 @@
 import React from "react";
 import Options from "./Options";
 import DrawingGrid from "./DrawingGrid";
+import './creatingStyling.scss';
 
 class Creating extends React.Component {
     constructor(props) {
@@ -14,11 +15,14 @@ class Creating extends React.Component {
     }
 
     changeWidth(width) {
-        this.setState(width);
+        this.setState({width});
     }
 
     changeHeight(height) {
-        this.setState(height);
+        this.setState({height});
+    }
+    changeName(name) {
+        this.setState({name});
     }
 
     render() {
@@ -29,7 +33,8 @@ class Creating extends React.Component {
                 </h1>
                 <form>
                     <DrawingGrid width={this.state.width} height={this.state.height}></DrawingGrid>
-                    <Options changeWidth={this.changeWidth()} changeHeight={this.changeHeight()}></Options>
+                    <Options changeWidth={(e) => this.changeWidth(e)} changeHeight={(e) => this.changeHeight(e)} changeName={(e) => this.changeName(e)}
+                             width={this.state.width} height={this.state.height} name={this.state.name} ></Options>
                 </form>
             </div>
         );
