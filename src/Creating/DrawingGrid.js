@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import DrawSquare from "./DrawSquare";
-import Square from "../Solving/Square";
 
 class DrawingGrid extends Component {
     createGrid(){
