@@ -111,14 +111,14 @@ class Creating extends React.Component {
 
         var topHintsList = [];
         for (let x = 0; x < hints.sideHints.length; x++) {
-            for (let y = 0; y < hints.topHints[x].length; y++){
+            for (let y = hints.topHints[x].length - 1; y >= 0; y--){
                 topHintsList.push({value: hints.topHints[x][y], xCord: x, ycord: y})
             }
         }
-
+        console.log(topHintsList);
         var sideHintsList = [];
         for (let x = 0; x < hints.sideHints.length; x++) {
-            for (let y = 0; y < hints.sideHints[x].length; y++){
+            for (let y = hints.sideHints[x].length - 1; y >= 0; y--){
                 sideHintsList.push({value: hints.sideHints[x][y], xCord: x, ycord: y})
             }
         }
