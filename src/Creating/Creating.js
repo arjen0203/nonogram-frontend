@@ -17,6 +17,7 @@ class Creating extends React.Component {
         };
     }
 
+
     getPictureGrid(x, y) {
         var pictureGrid = [];
         for (let i = 0; i < x; i++) {
@@ -60,8 +61,7 @@ class Creating extends React.Component {
     }
 
     changeName(name) {
-        let pictureGrid = this.getPictureGrid(this.state.width, this.state.height);
-        this.setState({name, pictureGrid});
+        this.setState({name});
     }
 
     setHints(){
@@ -82,7 +82,6 @@ class Creating extends React.Component {
                 counter = 0;
             }
         }
-        console.log(sideHints);
 
         let topHints = [];
         counter = 0;
@@ -103,10 +102,44 @@ class Creating extends React.Component {
         }
 
         this.setState({topHints, sideHints})
+
+        return {sideHints: sideHints, topHints: topHints};
     }
 
     saveNonogram(){
-        this.setHints();
+        var hints = this.setHints();
+
+        var topHintsList = [];
+        for (let x = 0; x < hints.sideHints.length; x++) {
+            for (let y = 0; y < hints.topHints[x].length; y++){
+                topHintsList.push({value: hints.topHints[x][y], xCord: x, ycord: y})
+            }
+        }
+
+        var sideHintsList = [];
+        for (let x = 0; x < hints.sideHints.length; x++) {
+            for (let y = 0; y < hints.sideHints[x].length; y++){
+                sideHintsList.push({value: hints.sideHints[x][y], xCord: x, ycord: y})
+            }
+        }
+        let nonogram = { name: this.state.name, topValues: topHintsList, sideValues: sideHintsList };
+        console.log(nonogram);
+        fetch(`http://localhost:8080/api/nonogram/add`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nonogram)
+        })
+            .then(res => {
+                if(!res.ok){
+                    this.setState({ ...this.state, saveError: "Something went wrong while saving" });
+                    return Promise.reject("Promise rejected")
+                }
+                res.json()
+            })
+            .then(data => {
+                this.props.history.push("/");
+            })
+            .catch(this.setState({ ...this.state, registerError: "Something went wrong while saving" }));
     }
 
 
