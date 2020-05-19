@@ -1,16 +1,19 @@
+@import './../colors';
+
 .center {
     justify-content: center;
     display: flex;
 
     .options {
-        background-color: #d1eab5;
+        background-color: $silverSandLight;
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 10px;
         max-width: 400px;
-        border-radius: 3px;
+        border-radius: 8px;
         margin-bottom: 20px;
+        margin-top: 35px;
 
         .size-input {
             padding: 2px;
@@ -24,17 +27,23 @@
             margin-bottom: 10px;
         }
 
+        .size-warning {
+            color: darkred;
+            font-size: 14px;
+            font-style: italic;
+        }
+
         .save-button {
             display: inline-block;
             margin-top: 5px;
             padding: 5px;
-            background-color: #5B8C5A;
+            background-color: $blackCoral;
             color: white;
             cursor: pointer;
             text-decoration: none;
             border: none;
                 &:hover {
-                    background-color: #94A582;
+                    background-color: $blackCoralLight;
                 }
                 &:active {
                     position:relative;
@@ -54,12 +63,13 @@
                 margin: -1px;
                 padding: 0;
                 width: 34px;
-                color: #35393C;
+                color: $gunMetal;
                 text-align: center;
                 font-size: 35px;
                 line-height: 36px;
                 user-select: none;
                 float: left;
+                border-radius: 3px;
             }
 
         }

@@ -1,0 +1,110 @@
+@import './../colors';
+
+.center {
+    justify-content: center;
+    display: flex;
+
+    .solving{
+
+        .puzzle {
+            margin-top: 30px;
+
+            .to-be-solved-top {
+                border-left: 2px solid $gunMetal;
+                border-right: 2px solid $gunMetal;
+                background-color: rgba(0, 0, 0, 0.08);
+                color: #35393C;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                text-align: center;
+                font-size: 20px;
+                line-height: 32px;
+            }
+
+            .solved-top {
+                border-left: 2px solid $gunMetal;
+                border-right: 2px solid $gunMetal;
+                background-color: rgba(0, 0, 0, 0.08);
+                color: $gunMetalTransparent;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                text-align: center;
+                font-size: 20px;
+                line-height: 32px;
+            }
+
+            .to-be-solved-side {
+                border-top: 2px solid $gunMetal;
+                border-bottom: 2px solid $gunMetal;
+                background-color: rgba(0, 0, 0, 0.08);
+                color: #35393C;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                text-align: center;
+                font-size: 20px;
+                line-height: 32px;
+            }
+
+            .solved-side {
+                border-top: 2px solid $gunMetal;
+                border-bottom: 2px solid $gunMetal;
+                background-color: rgba(0, 0, 0, 0.08);
+                color: $gunMetalTransparent;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                text-align: center;
+                font-size: 20px;
+                line-height: 32px;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
+            .top-number-column{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+
+            .square {
+                border: 2px solid $gunMetal;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                color: $gunMetal;
+                text-align: center;
+                font-size: 35px;
+                line-height: 36px;
+                user-select: none;
+                border-radius: 3px;
+            }
+            .square-filled {
+                background-color: $gunMetal;
+                border: 2px solid $gunMetal;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                color: $gunMetal;
+                text-align: center;
+                font-size: 35px;
+                line-height: 36px;
+                user-select: none;
+                border-radius: 3px;
+            }
+        }
+    }
+}
+

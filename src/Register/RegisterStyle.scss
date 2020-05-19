@@ -1,0 +1,64 @@
+@import './../colors';
+
+.center {
+    justify-content: center;
+    display: flex;
+
+    .register-fields {
+        display: flex;
+        flex-direction: column;
+        background-color: $blackCoral;
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 60px;
+        width: 350px;
+
+        * {
+            color: $white;
+            font-size: 18px;
+        }
+
+        .register-title {
+            text-align: center;
+            color: $white;
+        }
+
+        .register-username-input {
+            margin-top: 3px;
+            margin-bottom: 10px;
+        }
+
+        .register-password-input {
+            margin-top: 3px;
+            margin-bottom: 10px;
+        }
+
+        .register-submit-button {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 5px;
+            background-color: $silverSand;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: 0.4s;
+            width: 200px;
+            margin-left: 75px;
+            color: $gunMetal;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: $silverSandLight;
+            }
+            &:active {
+                position:relative;
+                top:1px;
+            }
+        }
+        .to-login-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+}

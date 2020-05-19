@@ -1,6 +1,5 @@
 import React from "react";
 import Square from "./Square";
-import PuzzleStyle from "./PuzzleStyle.module.css";
 import TopNumber from "./TopNumber";
 import SideNumber from "./SideNumber";
 
@@ -25,9 +24,9 @@ class Puzzle extends React.Component {
                 sameColumn.push(<TopNumber key={["T",n,m]}></TopNumber>)
             }
 
-            numbers.push(<div key={["TN",m]} className={PuzzleStyle.topNumberColumn}>{sameColumn}</div>);
+            numbers.push(<div key={["TN",m]} className="top-number-column">{sameColumn}</div>);
         }
-        items.push(<div key={"TopNumbers"} className={PuzzleStyle.row}> {numbers} </div>);
+        items.push(<div key={"TopNumbers"} className="row"> {numbers} </div>);
 
         //cubes and side number hints
         for (var i = 0; i < y; i++){
@@ -50,7 +49,7 @@ class Puzzle extends React.Component {
                                  onMouseEnter={(e) => this.onDrag(x, y, e)}
                 ></Square>);
             }
-            items.push(<div key={["CR",i]} className={PuzzleStyle.row}> {row} </div>);
+            items.push(<div key={["CR",i]} className="row"> {row} </div>);
         }
 
         return (<div>{items}</div>);
@@ -184,7 +183,7 @@ class Puzzle extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="puzzle">
                 {this.createBoxes()}
             </div>
         );

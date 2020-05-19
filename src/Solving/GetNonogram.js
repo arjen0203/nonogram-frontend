@@ -9,7 +9,13 @@ class GetNonogram extends React.Component {
         sideRow: null,
     };
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     async componentDidMount() {
+        this._isMounted = true;
+
         const URL = 'https://nonograms.nl/api/nonogram/get?id=' + this.props.id;
         const response = await fetch(URL);
         const data = await response.json();
@@ -47,8 +53,9 @@ class GetNonogram extends React.Component {
                 newSolveState[i].push(0);
             }
         }
-
-        this.setState({topRow: newTopRow, sideRow: newSideRow, solveState: newSolveState, loading: false});
+        if (this._isMounted) {
+            this.setState({topRow: newTopRow, sideRow: newSideRow, solveState: newSolveState, loading: false});
+        }
     }
 
     render() {
