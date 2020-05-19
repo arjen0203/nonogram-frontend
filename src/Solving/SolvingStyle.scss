@@ -1,3 +1,5 @@
+@import './../colors';
+
 .center {
     justify-content: center;
     display: flex;
@@ -8,8 +10,8 @@
             margin-top: 30px;
 
             .to-be-solved-top {
-                border-left: 2px solid #35393C;
-                border-right: 2px solid #35393C;
+                border-left: 2px solid $gunMetal;
+                border-right: 2px solid $gunMetal;
                 background-color: rgba(0, 0, 0, 0.08);
                 color: #35393C;
                 height: 34px;
@@ -22,10 +24,10 @@
             }
 
             .solved-top {
-                border-left: 2px solid #5C6469;
-                border-right: 2px solid #5C6469;
+                border-left: 2px solid $gunMetal;
+                border-right: 2px solid $gunMetal;
                 background-color: rgba(0, 0, 0, 0.08);
-                color: rgba(53, 57, 60, 0.25);
+                color: $gunMetalTransparent;
                 height: 34px;
                 margin: -1px;
                 padding: 0;
@@ -36,8 +38,8 @@
             }
 
             .to-be-solved-side {
-                border-top: 2px solid #35393C;
-                border-bottom: 2px solid #35393C;
+                border-top: 2px solid $gunMetal;
+                border-bottom: 2px solid $gunMetal;
                 background-color: rgba(0, 0, 0, 0.08);
                 color: #35393C;
                 height: 34px;
@@ -50,10 +52,10 @@
             }
 
             .solved-side {
-                border-top: 2px solid #5C6469;
-                border-bottom: 2px solid #5C6469;
+                border-top: 2px solid $gunMetal;
+                border-bottom: 2px solid $gunMetal;
                 background-color: rgba(0, 0, 0, 0.08);
-                color: rgba(53, 57, 60, 0.25);
+                color: $gunMetalTransparent;
                 height: 34px;
                 margin: -1px;
                 padding: 0;
@@ -76,12 +78,25 @@
             }
 
             .square {
-                border: 2px solid #35393C;
+                border: 2px solid $gunMetal;
                 height: 34px;
                 margin: -1px;
                 padding: 0;
                 width: 34px;
-                color: #35393C;
+                color: $gunMetal;
+                text-align: center;
+                font-size: 35px;
+                line-height: 36px;
+                user-select: none;
+            }
+            .square-filled {
+                background-color: $gunMetal;
+                border: 2px solid $gunMetal;
+                height: 34px;
+                margin: -1px;
+                padding: 0;
+                width: 34px;
+                color: $gunMetal;
                 text-align: center;
                 font-size: 35px;
                 line-height: 36px;
