@@ -1,0 +1,45 @@
+@import './colors';
+
+* {
+    font-family: Arial;
+    color: #35393C;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #E1F4CB;
+}
+
+.router-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #5B8C5A;
+
+    li {
+        float: left;
+        border-right: 3px solid #94A582;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #94A582;
+    }
+
+    .login-button {
+        float: right;
+        border-left: 3px solid #94A582;
+        border-right: 0px;
+    }
+}
+

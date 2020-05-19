@@ -1,14 +1,13 @@
 import React from "react";
-import SolveNumberStyle from './NumberStyle.module.css';
 
 
 class SideNumber extends React.Component {
     render() {
         var styling;
         if (this.props.value.holds === false){
-            styling = SolveNumberStyle.ToBeSolvedSide
+            styling = "to-be-solved-side"
         } else {
-            styling = SolveNumberStyle.SolvedSide
+            styling = "solved-side"
         }
 
         return (

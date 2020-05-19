@@ -1,5 +1,4 @@
 import React from "react";
-import SquareStyle from './SquareStyle.module.css';
 
 class Square extends React.Component {
     render() {
@@ -11,7 +10,7 @@ class Square extends React.Component {
         }
         return (
             <div
-                className={SquareStyle.square}
+                className={"square"}
                 style={filled}
                 onMouseDown={(e) => this.props.onMouseDown(e)}
                 onContextMenu={(e) => this.props.onContextMenu(e)}

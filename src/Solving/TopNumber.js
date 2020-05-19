@@ -1,14 +1,13 @@
 import React from "react";
-import SolveNumberStyle from './NumberStyle.module.css';
 
 
 class TopNumber extends React.Component {
     render() {
         var styling;
         if (this.props.value.holds === false){
-            styling = SolveNumberStyle.ToBeSolvedTop
+            styling = "to-be-solved-top";
         } else {
-            styling = SolveNumberStyle.SolvedTop
+            styling = "solved-top"
         }
 
         return (

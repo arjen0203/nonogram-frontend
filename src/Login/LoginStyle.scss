@@ -1,0 +1,11 @@
+@import './../colors';
+
+.center {
+    justify-content: center;
+    display: flex;
+
+    .login-fields {
+        display: flex;
+        flex-direction: column;
+    }
+}
