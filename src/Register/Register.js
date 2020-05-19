@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import './RegisterStyle.scss';
 
 class Register extends Component {
     render() {
@@ -8,14 +9,14 @@ class Register extends Component {
                 <div className="register-fields">
                     <b className="register-title">Register:</b>
                     <label>Username:</label>
-                    <input type="text" placeholder="Username"></input>
+                    <input className="register-username-input" type="text" placeholder=" Username"></input>
                     <label>Password:</label>
-                    <input type="password" placeholder="Password"></input>
+                    <input className="register-password-input" type="password" placeholder=" Password"></input>
                     <label>Password repeat:</label>
-                    <input type="password" placeholder="Password repeat"></input>
-                    <button>Register</button>
+                    <input className="register-password-input" type="password" placeholder=" Password repeat"></input>
+                    <button className="register-submit-button">Register</button>
 
-                    <Link to={'/login'} >Already have an account? Login here.</Link>
+                    <Link className="to-login-link" to={'/login'}>Already have an account? Login here.</Link>
                 </div>
             </div>
         );

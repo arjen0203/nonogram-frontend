@@ -9,12 +9,12 @@ class Login extends Component {
                 <div className="login-fields">
                     <b className="login-title">Login</b>
                     <label>Username:</label>
-                    <input type="text" placeholder="Username"></input>
+                    <input className="login-username-input" type="text" placeholder=" Username"></input>
                     <label>Password:</label>
-                    <input type="password" placeholder="Password"></input>
-                    <button>Login</button>
+                    <input className="login-username-input" type="password" placeholder=" Password"></input>
+                    <button className="login-submit-button">Login</button>
 
-                    <Link to={'/register'} >Don't have an account yet? Register here.</Link>
+                    <Link className="to-register-link" to={'/register'} >Don't have an account yet? Register here.</Link>
                 </div>
             </div>
         );
