@@ -7,5 +7,15 @@
     .login-fields {
         display: flex;
         flex-direction: column;
+        background-color: $blackCoral;
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 60px;
+        color: $white;
+
+        .login-title {
+            text-align: center;
+            color: $white;
+        }
     }
 }

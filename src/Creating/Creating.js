@@ -13,7 +13,8 @@ class Creating extends React.Component {
             name: '',
             pictureGrid: this.getPictureGrid(10, 10),
             topHints: [],
-            sideHints: []
+            sideHints: [],
+            sizeWarning: ""
         };
     }
 
@@ -50,14 +51,30 @@ class Creating extends React.Component {
         this.setState({pictureGrid});
     }
 
+    getSizeWarning(width, height){
+        let sizeWarning = this.state.sizeWarning;
+        if (width < 4 || height < 4) sizeWarning = "Nonogram should be at least 4 by 4"
+        else sizeWarning = "";
+
+        return sizeWarning;
+    }
+
     changeWidth(width) {
+        if (width > 30) width = 30;
+        if (width < 1) width = 1;
+
+        let sizeWarning = this.getSizeWarning(width, this.state.height);
         let pictureGrid = this.getPictureGrid(width, this.state.height);
-        this.setState({width, pictureGrid});
+        this.setState({width, pictureGrid, sizeWarning});
     }
 
     changeHeight(height) {
+        if (height > 30) height = 30;
+        if (height < 1) height = 1;
+
+        let sizeWarning = this.getSizeWarning(this.state.width, height);
         let pictureGrid = this.getPictureGrid(this.state.width, height);
-        this.setState({height, pictureGrid});
+        this.setState({height, pictureGrid, sizeWarning});
     }
 
     changeName(name) {
@@ -106,7 +123,12 @@ class Creating extends React.Component {
         return {sideHints: sideHints, topHints: topHints};
     }
 
-    saveNonogram(){
+    async saveNonogram(){
+        if (this.state.width < 4 || this.state.height < 4) return;
+        if (this.saving) return
+        this.saving = true;
+
+
         var hints = this.setHints();
 
         var topHintsList = [];
@@ -131,26 +153,27 @@ class Creating extends React.Component {
         })
             .then(res => {
                 if(!res.ok){
-                    this.setState({ ...this.state, saveError: "Something went wrong while saving" });
+                    this.setState({ ...this.state, saveError: "Something went wrong while saving"});
+                    this.saving = false;
                     return Promise.reject("Promise rejected")
                 }
                 res.json()
             })
             .then(data => {
                 this.props.history.push("/");
+                this.saving = false;
             })
-            .catch(this.setState({ ...this.state, registerError: "Something went wrong while saving" }));
+            .catch(this.setState({ ...this.state, registerError: "Something went wrong while saving"}));
+
     }
 
 
     render() {
         return (
             <div>
-                <h1>
-                    This is the creating page!
-                </h1>
                     <Options changeWidth={(e) => this.changeWidth(e)} changeHeight={(e) => this.changeHeight(e)} changeName={(e) => this.changeName(e)}
-                             width={this.state.width} height={this.state.height} name={this.state.name} saveNonogram={() => this.saveNonogram()}></Options>
+                             width={this.state.width} height={this.state.height} name={this.state.name} saveNonogram={() => this.saveNonogram()}
+                            sizeWarning={this.state.sizeWarning}></Options>
                     <DrawingGrid width={this.state.width} height={this.state.height} pictureGrid={this.state.pictureGrid}
                     onClick={(x, y, e) => this.onClick(x, y, e)} onDrag={(x, y, e) => this.onDrag(x, y, e)}></DrawingGrid>
             </div>

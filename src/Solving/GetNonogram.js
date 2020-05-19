@@ -53,11 +53,9 @@ class GetNonogram extends React.Component {
                 newSolveState[i].push(0);
             }
         }
-        if (this.state._isMounted) {
+        if (this._isMounted) {
             this.setState({topRow: newTopRow, sideRow: newSideRow, solveState: newSolveState, loading: false});
         }
-
-
     }
 
     render() {
