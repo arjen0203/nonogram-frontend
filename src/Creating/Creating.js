@@ -11,20 +11,37 @@ class Creating extends React.Component {
             width: 10,
             height: 10,
             name: '',
-            pictureGrid: this.getPictureGrid(10, 10),
+            pictureGrid: this.firstGrid(10, 10),
             topHints: [],
             sideHints: [],
             sizeWarning: ""
         };
     }
 
-
-    getPictureGrid(x, y) {
-        var pictureGrid = [];
+    firstGrid(x, y){
+        let pictureGrid = [];
         for (let i = 0; i < x; i++) {
             pictureGrid.push([])
             for (let j = 0; j < y; j++) {
                 pictureGrid[i].push(0);
+            }
+        }
+        return pictureGrid;
+    }
+
+    getPictureGrid(x, y) {
+        let oldGrid = this.state.pictureGrid;
+        let pictureGrid = [];
+        for (let i = 0; i < x; i++) {
+            pictureGrid.push([])
+            for (let j = 0; j < y; j++) {
+                if (i < oldGrid.length) {
+                    if (j < oldGrid[i].length){
+                        if (oldGrid[i][j] === 1) pictureGrid[i].push(1);
+                        else pictureGrid[i].push(0);
+                    } else pictureGrid[i].push(0);
+                } else pictureGrid.push(0);
+
             }
         }
         return pictureGrid;
