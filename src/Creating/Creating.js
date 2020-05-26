@@ -59,6 +59,7 @@ class Creating extends React.Component {
         return sizeWarning;
     }
 
+    //actually changes height
     changeWidth(width) {
         if (width > 30) width = 30;
         if (width < 1) width = 1;
@@ -68,6 +69,7 @@ class Creating extends React.Component {
         this.setState({width, pictureGrid, sizeWarning});
     }
 
+    //actually changes width
     changeHeight(height) {
         if (height > 30) height = 30;
         if (height < 1) height = 1;
@@ -132,7 +134,7 @@ class Creating extends React.Component {
         var hints = this.setHints();
 
         var topHintsList = [];
-        for (let x = 0; x < hints.sideHints.length; x++) {
+        for (let x = 0; x < hints.topHints.length; x++) {
             for (let y = hints.topHints[x].length - 1; y >= 0; y--){
                 topHintsList.push({value: hints.topHints[x][y], xCord: x, ycord: y})
             }
@@ -144,6 +146,7 @@ class Creating extends React.Component {
                 sideHintsList.push({value: hints.sideHints[x][y], xCord: x, ycord: y})
             }
         }
+
         let nonogram = { name: this.state.name, topValues: topHintsList, sideValues: sideHintsList };
         console.log(nonogram);
         fetch(`https://nonograms.nl/api/nonogram/add`, {
@@ -164,7 +167,6 @@ class Creating extends React.Component {
                 this.saving = false;
             })
             .catch(this.setState({ ...this.state, registerError: "Something went wrong while saving"}));
-
     }
 
 
