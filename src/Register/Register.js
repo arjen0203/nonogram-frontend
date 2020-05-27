@@ -19,7 +19,6 @@ class Register extends Component {
     }
 
     tryRegistrating(){
-        console.log("works");
         this.saving = true;
 
         let user = { username: this.state.username, password: this.state.password };
@@ -35,7 +34,7 @@ class Register extends Component {
                     this.saving = false;
                     return Promise.reject("Promise rejected")
                 }
-                res.json()
+                //res.json()
             })
             .then(data => {
                 this.props.history.push("/");
