@@ -21,26 +21,58 @@ class Register extends Component {
     tryRegistrating(){
         this.saving = true;
 
+        if (!this.legalInput()) return;
+
         let user = { username: this.state.username, password: this.state.password };
-        console.log(JSON.stringify(user));
         fetch(`http://localhost:8080/api/user/add`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         })
-            .then(res => {
-                if(!res.ok){
-                    this.setState({ ...this.state, registerError: "Something went wrong while registrating"});
-                    this.saving = false;
-                    return Promise.reject("Promise rejected")
+            .then( async (res) => {
+                if(res.ok){
+                    this.setState({username: "", password: "", passwordRepeat: ""});
+                    this.props.history.push('/');
                 }
-                //res.json()
+                else{
+                    const text = await res.text();
+                    this.setState({registerError: text });
+                }
             })
-            .then(data => {
-                this.props.history.push("/");
-                this.saving = false;
-            })
-            .catch(this.setState({ ...this.state, registerError: "Something went wrong while registrating"}));
+            .catch(e => this.setState({registerError: e }));
+    }
+
+    legalInput(){
+        if (this.state.username.length === "" | this.state.password === "" | this.state.passwordRepeat === "") {
+            this.setState({registerError: "Fill in all fields"})
+            return false;
+        }
+
+        if (this.state.username.length < 4) {
+            this.setState({registerError: "Username too short"})
+            return false;
+        }
+
+        if (this.state.username.length > 32) {
+            this.setState({registerError: "Username too long"})
+            return false;
+        }
+
+        if (this.state.password.length < 6) {
+            this.setState({registerError: "Password to short"})
+            return false;
+        }
+
+        if (this.state.password.length > 64) {
+            this.setState({registerError: "Password to long"})
+            return false;
+        }
+
+        if (this.state.password !== this.state.passwordRepeat) {
+            this.setState({registerError: "Passwords do match"})
+            return false;
+        }
+        return true;
     }
 
     handleNameChange(event){
@@ -60,12 +92,13 @@ class Register extends Component {
                 <div className="register-fields">
                     <b className="register-title">Register:</b>
                     <label>Username:</label>
-                    <input className="register-username-input" type="text" placeholder=" Username" value={this.state.username} onChange={this.handleNameChange}></input>
+                    <input className="register-username-input" type="text" placeholder="Username" value={this.state.username} onChange={this.handleNameChange}></input>
                     <label>Password:</label>
-                    <input className="register-password-input" type="password" placeholder=" Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
+                    <input className="register-password-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
                     <label>Password repeat:</label>
-                    <input className="register-password-input" type="password" placeholder=" Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
+                    <input className="register-password-input" type="password" placeholder="Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
                     <button className="register-submit-button" onClick={this.tryRegistrating}>Register</button>
+                    <b className="register-error">{this.state.registerError}</b>
 
                     <Link className="to-login-link" to={'/login'}>Already have an account? Login here.</Link>
                 </div>
