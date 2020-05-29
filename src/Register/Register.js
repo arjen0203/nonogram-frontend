@@ -98,7 +98,7 @@ class Register extends Component {
                     <label>Password repeat:</label>
                     <input className="register-password-input" type="password" placeholder="Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
                     <button className="register-submit-button" onClick={this.tryRegistrating}>Register</button>
-                    <b className="register-error">{this.state.registerError}</b>
+                    <b className="register-error">{this.state.loginError}</b>
 
                     <Link className="to-login-link" to={'/login'}>Already have an account? Login here.</Link>
                 </div>
