@@ -26,12 +26,25 @@
         .login-username-input {
             margin-top: 3px;
             margin-bottom: 10px;
+            color: $blackCoral;
+            padding-left: 3px;
         }
 
         .login-password-input {
             margin-top: 3px;
             margin-bottom: 10px;
+            color: $blackCoral;
+            padding-left: 3px;
         }
+
+        .login-error {
+            color: $errorColorLight;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: -8px;
+        }
+
 
         .login-submit-button {
             display: inline-block;

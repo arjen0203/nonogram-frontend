@@ -14,6 +14,9 @@ class App extends React.Component {
         this.state = {
             user: this.getUserContext()
         }
+
+        this.loginUser = this.loginUser.bind(this);
+        this.logoutUser = this.logoutUser.bind(this);
     }
 
     getUserContext() {
@@ -50,14 +53,14 @@ class App extends React.Component {
             .then(data => {
                 user = {userId: this.data.id, username: this.data.username, getToken: function () {return localStorage.getItem("token")}};
             }).catch(error => {
-            console.error('Couldnt get user', error);
+            console.error('Could not get user', error);
             return null;
         });
         return user;
     }
 
     async loginUser(token) {
-        await localStorage.setItem("token");
+        await localStorage.setItem("token", token);
         this.setState({user: this.getUserInfo()});
     }
 
@@ -71,8 +74,8 @@ class App extends React.Component {
     render() {
         const value = {
             user: this.state.user,
-            logoutUser: this.logoutUser(),
-            loginUser: this.loginUser()
+            logoutUser: this.logoutUser,
+            loginUser: this.loginUser
         }
 
       return (

@@ -38,8 +38,7 @@ class Register extends Component {
                     const text = await res.text();
                     this.setState({registerError: text });
                 }
-            })
-            .catch(e => this.setState({registerError: e }));
+            }).catch((e) => this.setState({loginError: "Could not communicate with server"}));
     }
 
     legalInput(){
@@ -82,6 +81,7 @@ class Register extends Component {
     handlePasswordChange(event){
         this.setState({password: event.target.value});
     }
+
     handlePasswordRepChange(event){
         this.setState({passwordRepeat: event.target.value});
     }
