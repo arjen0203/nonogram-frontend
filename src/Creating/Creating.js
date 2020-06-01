@@ -167,9 +167,9 @@ class Creating extends React.Component {
 
         let nonogram = { name: this.state.name, topValues: topHintsList, sideValues: sideHintsList };
         console.log(nonogram);
-        fetch(`https://nonograms.nl/api/nonogram/add`, {
+        fetch(`http://localhost:8080/api/nonogram/add`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
             body: JSON.stringify(nonogram)
         })
             .then(res => {
