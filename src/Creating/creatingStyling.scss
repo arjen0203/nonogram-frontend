@@ -16,6 +16,7 @@
         margin-top: 35px;
 
         .size-input {
+            margin-top: 3px;
             padding: 2px;
             margin-left: 5px;
             margin-right: 5px;
@@ -24,10 +25,15 @@
         .name-input {
             width: 70%;
             padding: 2px;
-            margin-bottom: 10px;
         }
 
         .size-warning {
+            color: $errorColorDark;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .name-warning {
             color: $errorColorDark;
             font-size: 14px;
             font-style: italic;

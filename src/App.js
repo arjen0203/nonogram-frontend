@@ -72,10 +72,11 @@ class App extends React.Component {
         await this.setState({user: this.getUserInfo()});
     }
 
-    logoutUser() {
-        localStorage.removeItem("token");
-        localStorage.removeItem("tokenTimestamp")
-        this.setState( {user: this.getUserInfo()});
+    async logoutUser() {
+        await localStorage.removeItem("token");
+        await localStorage.removeItem("tokenTimestamp")
+        let user = await this.getUserContext();
+        this.setState( {user});
     }
 
 
@@ -93,7 +94,7 @@ class App extends React.Component {
                       <ul className="router-list">
                           <li><Link to={'/solving/1'}>Solving</Link></li>
                           <li><Link to={'/creating'}>Creating</Link></li>
-                          {this.state.user.userId !== 0 || <li className="login-button"><Link to={'/login'}>Login</Link></li>}
+                          {this.state.user.userId !== 0 ? (<li className="login-button"><div className="logout-button" onClick={this.logoutUser}>Logout</div></li>) : <li className="login-button"><Link to={'/login'}>Login</Link></li>}
                       </ul>
                   </nav>
                   <Switch>

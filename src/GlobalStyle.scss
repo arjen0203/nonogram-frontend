@@ -43,5 +43,23 @@ body {
         border-left: 3px solid $gunMetal;
         border-right: 0px;
     }
+
+    .logout-button {
+        float: right;
+        border-left: 1px solid $gunMetal;
+        border-right: 0px;
+        display: block;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: 0.4s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $blackCoralLight;
+        }
+    }
 }
 
