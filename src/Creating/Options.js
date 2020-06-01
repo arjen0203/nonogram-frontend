@@ -7,6 +7,7 @@ class Options extends Component {
                 <div className="options">
                     <label>Name: </label>
                     <input className="name-input" type="text" id="fname" name="fname" value={this.props.name} onChange={(e) => this.props.changeName(e.target.value)}></input>
+                    <div className="name-warning">{this.props.nameWarning}</div>
                     <div>
                         <label>Width:</label>
                         <input className="size-input" type="number" id="Height" name="quantity" min="1" max="30"

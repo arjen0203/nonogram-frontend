@@ -2,6 +2,7 @@ import React from "react";
 import Options from "./Options";
 import DrawingGrid from "./DrawingGrid";
 import './creatingStyling.scss';
+import {UserContext} from "../UserContext";
 
 class Creating extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class Creating extends React.Component {
             pictureGrid: this.firstGrid(10, 10),
             topHints: [],
             sideHints: [],
-            sizeWarning: ""
+            sizeWarning: "",
+            nameWarning: ""
         };
     }
 
@@ -41,7 +43,6 @@ class Creating extends React.Component {
                         else pictureGrid[i].push(0);
                     } else pictureGrid[i].push(0);
                 } else pictureGrid.push(0);
-
             }
         }
         return pictureGrid;
@@ -97,7 +98,9 @@ class Creating extends React.Component {
     }
 
     changeName(name) {
-        this.setState({name});
+        let warning = this.state.nameWarning;
+        if (name.length > 2 && name.length < 65) warning = "";
+        this.setState({name, nameWarning: warning});
     }
 
     setHints(){
@@ -144,7 +147,15 @@ class Creating extends React.Component {
 
     async saveNonogram(){
         if (this.state.width < 4 || this.state.height < 4) return;
-        if (this.saving) return
+        if (this.saving) return;
+        if (this.state.name.length < 3) {
+            this.setState({nameWarning: "name is too short"})
+            return;
+        }
+        if (this.state.name.length > 64) {
+            this.setState({nameWarning: "name is too long"})
+            return;
+        }
         this.saving = true;
 
 
@@ -168,7 +179,7 @@ class Creating extends React.Component {
         console.log(nonogram);
         fetch(`https://nonograms.nl/api/nonogram/add`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
             body: JSON.stringify(nonogram)
         })
             .then(res => {
@@ -192,9 +203,12 @@ class Creating extends React.Component {
             <div>
                     <Options changeWidth={(e) => this.changeWidth(e)} changeHeight={(e) => this.changeHeight(e)} changeName={(e) => this.changeName(e)}
                              width={this.state.width} height={this.state.height} name={this.state.name} saveNonogram={() => this.saveNonogram()}
-                            sizeWarning={this.state.sizeWarning}></Options>
+                            sizeWarning={this.state.sizeWarning} nameWarning={this.state.nameWarning}></Options>
                     <DrawingGrid width={this.state.width} height={this.state.height} pictureGrid={this.state.pictureGrid}
                     onClick={(x, y, e) => this.onClick(x, y, e)} onDrag={(x, y, e) => this.onDrag(x, y, e)}></DrawingGrid>
+                <UserContext.Consumer>
+                    {({user, logoutUser, loginUser}) => {if (user.userId === 0) this.props.history.push('/')}}
+                </UserContext.Consumer>
             </div>
         );
     }

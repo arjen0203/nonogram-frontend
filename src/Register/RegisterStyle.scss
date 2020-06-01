@@ -26,11 +26,23 @@
         .register-username-input {
             margin-top: 3px;
             margin-bottom: 10px;
+            color: $blackCoral;
+            padding-left: 3px;
         }
 
         .register-password-input {
             margin-top: 3px;
             margin-bottom: 10px;
+            color: $blackCoral;
+            padding-left: 3px;
+        }
+
+        .register-error {
+            color: $errorColorLight;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: -8px;
         }
 
         .register-submit-button {
