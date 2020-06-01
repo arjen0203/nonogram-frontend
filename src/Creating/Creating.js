@@ -2,6 +2,7 @@ import React from "react";
 import Options from "./Options";
 import DrawingGrid from "./DrawingGrid";
 import './creatingStyling.scss';
+import {UserContext} from "../UserContext";
 
 class Creating extends React.Component {
     constructor(props) {
@@ -195,6 +196,9 @@ class Creating extends React.Component {
                             sizeWarning={this.state.sizeWarning}></Options>
                     <DrawingGrid width={this.state.width} height={this.state.height} pictureGrid={this.state.pictureGrid}
                     onClick={(x, y, e) => this.onClick(x, y, e)} onDrag={(x, y, e) => this.onDrag(x, y, e)}></DrawingGrid>
+                <UserContext.Consumer>
+                    {({user, logoutUser, loginUser}) => {if (user.userId === 0) this.props.history.push('/')}}
+                </UserContext.Consumer>
             </div>
         );
     }

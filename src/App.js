@@ -12,14 +12,19 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            user: this.getUserContext()
+            user: {userId: 0, username: "Guest", getToken: function () {return null;}}
         }
 
         this.loginUser = this.loginUser.bind(this);
         this.logoutUser = this.logoutUser.bind(this);
     }
 
-    getUserContext() {
+    async componentDidMount() {
+        let user = await this.getUserContext();
+        this.setState({user});
+    }
+
+    async getUserContext() {
         const tokenDate = new Date(localStorage.getItem("tokenTimestamp"));
         const today = new Date();
 
@@ -33,25 +38,26 @@ class App extends React.Component {
             localStorage.removeItem("token");
             return GuestUser;
         } else {
-            localStorage.setItem('date', today);
-            let user = this.getUserInfo();
-            if (user === null) return GuestUser;
+            localStorage.setItem('tokenTimestamp', today);
+            let user
+            user = await this.getUserInfo();
+            if (user !== null) return user;
         }
         return GuestUser;
     }
 
     async getUserInfo() {
         let user;
-        await fetch('https://localhost:8080/api/user/me', {
+        await fetch('http://localhost:8080/api/user/profile', {
             method: 'GET',
             headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem("token")}
         })
-            .then( async res => {
-                if (!res.ok) throw new Error(await res.text());
+            .then(res => {
+                if (!res.ok) throw new Error(res.text());
                 return res.json();
             })
             .then(data => {
-                user = {userId: this.data.id, username: this.data.username, getToken: function () {return localStorage.getItem("token")}};
+                user = {userId: data.id, username: data.username, getToken: function () {return localStorage.getItem("token")}};
             }).catch(error => {
             console.error('Could not get user', error);
             return null;
@@ -60,8 +66,10 @@ class App extends React.Component {
     }
 
     async loginUser(token) {
+        const today = new Date();
         await localStorage.setItem("token", token);
-        this.setState({user: this.getUserInfo()});
+        await localStorage.setItem("tokenTimestamp", today.toString());
+        await this.setState({user: this.getUserInfo()});
     }
 
     logoutUser() {
@@ -85,7 +93,7 @@ class App extends React.Component {
                       <ul className="router-list">
                           <li><Link to={'/solving/1'}>Solving</Link></li>
                           <li><Link to={'/creating'}>Creating</Link></li>
-                          <li className="login-button"><Link to={'/login'}>Login</Link></li>
+                          {this.state.user.userId !== 0 || <li className="login-button"><Link to={'/login'}>Login</Link></li>}
                       </ul>
                   </nav>
                   <Switch>

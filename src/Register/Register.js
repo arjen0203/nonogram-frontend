@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import './RegisterStyle.scss';
+import {UserContext} from "../UserContext";
 
 class Register extends Component {
     constructor(props) {
@@ -38,11 +39,11 @@ class Register extends Component {
                     const text = await res.text();
                     this.setState({registerError: text });
                 }
-            }).catch((e) => this.setState({loginError: "Could not communicate with server"}));
+            }).catch(() => this.setState({loginError: "Could not communicate with server"}));
     }
 
     legalInput(){
-        if (this.state.username.length === "" | this.state.password === "" | this.state.passwordRepeat === "") {
+        if (this.state.username.length === "" || this.state.password === "" || this.state.passwordRepeat === "") {
             this.setState({registerError: "Fill in all fields"})
             return false;
         }
@@ -98,10 +99,13 @@ class Register extends Component {
                     <label>Password repeat:</label>
                     <input className="register-password-input" type="password" placeholder="Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
                     <button className="register-submit-button" onClick={this.tryRegistrating}>Register</button>
-                    <b className="register-error">{this.state.loginError}</b>
+                    <b className="register-error">{this.state.registerError}</b>
 
                     <Link className="to-login-link" to={'/login'}>Already have an account? Login here.</Link>
                 </div>
+                <UserContext.Consumer>
+                    {({user, logoutUser, loginUser}) => {if (user.userId !== 0) this.props.history.push('/')}}
+                </UserContext.Consumer>
             </div>
         );
     }
