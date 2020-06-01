@@ -25,7 +25,7 @@ class Register extends Component {
         if (!this.legalInput()) return;
 
         let user = { username: this.state.username, password: this.state.password };
-        fetch(`http://localhost:8080/api/user/add`, {
+        fetch(`https://nonograms.nl/api/user/add`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)

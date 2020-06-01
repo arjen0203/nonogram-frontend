@@ -31,7 +31,7 @@ class Login extends Component {
         }
 
         var credentials = { username:this.state.username, password:this.state.password };
-        fetch('http://localhost:8080/api/login', {
+        fetch('https://nonograms.nl/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials)
