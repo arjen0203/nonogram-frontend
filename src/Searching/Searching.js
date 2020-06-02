@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NonogramInfo from "./NonogramInfo";
 import './SearchingStyle.scss'
+import PageSelection from "./PageSelection";
 
 class Searching extends Component {
     constructor() {
@@ -8,6 +9,8 @@ class Searching extends Component {
 
         this.state = {
             loading: false,
+            currentPage: 0,
+            maxPage: 0,
             nonogramInfos: [],
         }
     }
@@ -18,7 +21,6 @@ class Searching extends Component {
 
     setNonogramInfos(data) {
         let nonogramInfos = [];
-        console.log(data);
 
         for (let i = 0; i < data.length; i++) {
             nonogramInfos.push({id: data[i].id, name: data[i].name, creater: data[i].createrName});
@@ -39,6 +41,10 @@ class Searching extends Component {
     }
 
     componentDidMount() {
+        this.setInfos();
+    }
+
+    setInfos(){
         this._isMounted = true;
 
         const params = new URLSearchParams(document.location.search.substring(1));
@@ -55,7 +61,7 @@ class Searching extends Component {
                 if (res.ok) {
                     res.json().then(data => {
                         this.setNonogramInfos(data);
-                        this.setState({loading: false})
+                        this.setState({loading: false, currentPage: page + 1})
                     })
                 } else {
                     const error = await res.text();
@@ -64,6 +70,10 @@ class Searching extends Component {
             }).catch(() => this.setState({error: "Could not communicate with server"}));
     }
 
+    changePage(page){
+        this.props.history.push("/solving?page=" + page)
+        this.setInfos();
+    }
 
 
     render() {
@@ -76,7 +86,7 @@ class Searching extends Component {
                 ) : (
                     <div className="nonogram-selection">
                         <div className="nonogram-infos">{info}</div>
-                        <div></div>
+                        <PageSelection changePage={(page) => this.changePage(page)} currentPage={this.state.currentPage} maxPage={this.state.maxPage}></PageSelection>
                     </div>
                 )}
             </div>

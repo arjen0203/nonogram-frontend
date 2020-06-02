@@ -191,7 +191,7 @@ class Creating extends React.Component {
                 res.json()
             })
             .then(data => {
-                this.props.history.push("/");
+                this.props.history.push("/solving");
                 this.saving = false;
             })
             .catch(this.setState({ ...this.state, registerError: "Something went wrong while saving"}));
@@ -207,7 +207,7 @@ class Creating extends React.Component {
                     <DrawingGrid width={this.state.width} height={this.state.height} pictureGrid={this.state.pictureGrid}
                     onClick={(x, y, e) => this.onClick(x, y, e)} onDrag={(x, y, e) => this.onDrag(x, y, e)}></DrawingGrid>
                 <UserContext.Consumer>
-                    {({user, logoutUser, loginUser}) => {if (user.userId === 0) this.props.history.push('/')}}
+                    {({user, logoutUser, loginUser}) => {if (user.userId === 0) this.props.history.push('/solving')}}
                 </UserContext.Consumer>
             </div>
         );

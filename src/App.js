@@ -104,6 +104,7 @@ class App extends React.Component {
                       <Route exact path='/creating' component={Creating}/>
                       <Route exact path='/solving' component={Searching}/>
                       <Route exact path='/solving/:id' component={Solving}/>
+                      <Route path='/' component={Searching}/>
                   </Switch>
               </Router>
           </UserContext.Provider>
