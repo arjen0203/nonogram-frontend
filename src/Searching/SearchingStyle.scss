@@ -1,0 +1,88 @@
+@import './../colors';
+
+.center {
+    justify-content: center;
+    display: flex;
+
+    .nonogram-selection {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+        margin-top: 40px;
+
+        .nonogram-infos {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+
+            .nonoogram-info {
+                margin: 1% 2.5% 1% 2.5%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 15%;
+                background-color: $silverSandLight;
+                padding: 2%;
+                border-radius: 20px;
+                border: 5px solid $silverSand;
+                cursor: pointer;
+                transition: 0.5s;
+
+                .gram-info-name {
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+                .gram-info-creater {
+                    font-style: italic;
+                    font-size: 18px;
+                }
+
+                &:hover {
+                    background-color: $silverSand;
+                }
+            }
+        }
+        .page-nav {
+            background-color: $silverSand;
+            padding: 10px;
+            border-radius: 8px;
+
+            .page-nav-button {
+                display: inline-block;
+                margin: 5px;
+                padding: 5px;
+                width: 26px;
+                height: 26px;
+                background-color: $blackCoral;
+                color: white;
+                cursor: pointer;
+                text-decoration: none;
+                border: none;
+                font-weight: bold;
+                text-align: center;
+                &:hover {
+                    background-color: $blackCoralLight;
+                }
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            .page-nav-input {
+                width: 25px;
+                padding: 4px;
+                text-align: right;
+                text-align: center;
+
+
+            }
+        }
+    }
+}

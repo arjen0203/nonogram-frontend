@@ -6,6 +6,7 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import './GlobalStyle.scss';
 import {UserContext} from './UserContext';
+import Searching from "./Searching/Searching";
 
 class App extends React.Component {
     constructor(props) {
@@ -92,8 +93,8 @@ class App extends React.Component {
               <Router className="router">
                   <nav>
                       <ul className="router-list">
-                          <li><Link to={'/solving/1'}>Solving</Link></li>
-                          <li><Link to={'/creating'}>Creating</Link></li>
+                          <li><Link to={'/solving'}>Solving</Link></li>
+                          {this.state.user.userId !== 0 ? (<li><Link to={'/creating'}>Creating</Link></li>) : (<div></div>)}
                           {this.state.user.userId !== 0 ? (<li className="login-button"><div className="logout-button" onClick={this.logoutUser}>Logout</div></li>) : <li className="login-button"><Link to={'/login'}>Login</Link></li>}
                       </ul>
                   </nav>
@@ -101,7 +102,9 @@ class App extends React.Component {
                       <Route exact path='/login' component={Login}/>
                       <Route exact path='/register' component={Register}/>
                       <Route exact path='/creating' component={Creating}/>
+                      <Route exact path='/solving' component={Searching}/>
                       <Route exact path='/solving/:id' component={Solving}/>
+                      <Route path='/' component={Searching}/>
                   </Switch>
               </Router>
           </UserContext.Provider>

@@ -104,7 +104,7 @@ class Register extends Component {
                     <Link className="to-login-link" to={'/login'}>Already have an account? Login here.</Link>
                 </div>
                 <UserContext.Consumer>
-                    {({user, logoutUser, loginUser}) => {if (user.userId !== 0) this.props.history.push('/')}}
+                    {({user, logoutUser, loginUser}) => {if (user.userId !== 0) this.props.history.push('/solving')}}
                 </UserContext.Consumer>
             </div>
         );

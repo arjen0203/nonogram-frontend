@@ -54,7 +54,7 @@ class Login extends Component {
             <UserContext.Consumer>
                 {({user, logoutUser, loginUser}) => {
                     if (user.userId !== 0) {
-                        this.props.history.push('/')
+                        this.props.history.push('/solving')
                     }
                     else {
                         return (
