@@ -49,7 +49,7 @@ class App extends React.Component {
 
     async getUserInfo() {
         let user;
-        await fetch('http://localhost:8080/api/user/profile', {
+        await fetch('https://nonograms.nl/api/user/profile', {
             method: 'GET',
             headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem("token")}
         })
