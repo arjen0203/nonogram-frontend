@@ -167,7 +167,6 @@ class Creating extends React.Component {
                 topHintsList.push({value: hints.topHints[x][y], xCord: x, ycord: y})
             }
         }
-        console.log(topHintsList);
         var sideHintsList = [];
         for (let x = 0; x < hints.sideHints.length; x++) {
             for (let y = hints.sideHints[x].length - 1; y >= 0; y--){
@@ -176,7 +175,6 @@ class Creating extends React.Component {
         }
 
         let nonogram = { name: this.state.name, topValues: topHintsList, sideValues: sideHintsList };
-        console.log(nonogram);
         fetch(`https://nonograms.nl/api/nonogram/add`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
