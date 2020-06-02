@@ -7,11 +7,16 @@ class Searching extends Component {
     constructor() {
         super();
 
+        const params = new URLSearchParams(document.location.search.substring(1));
+
+        let page = params.get('page');
+
         this.state = {
             loading: false,
             currentPage: 0,
             maxPage: 0,
             nonogramInfos: [],
+            displayNumber: page
         }
     }
 
@@ -59,9 +64,10 @@ class Searching extends Component {
         fetch(URL)
             .then( async res => {
                 if (res.ok) {
+                    const maxPage = await res.headers.get("TotalPages");
                     res.json().then(data => {
-                        this.setNonogramInfos(data);
-                        this.setState({loading: false, currentPage: page + 1})
+                        this.setNonogramInfos(data)
+                        this.setState({loading: false, currentPage: page + 1, maxPage: maxPage, displayNumber: page + 1})
                     })
                 } else {
                     const error = await res.text();
@@ -75,6 +81,9 @@ class Searching extends Component {
         this.setInfos();
     }
 
+    changDisplauNumber(displayNumber){
+        this.setState({displayNumber})
+    }
 
     render() {
         let info;
@@ -86,7 +95,8 @@ class Searching extends Component {
                 ) : (
                     <div className="nonogram-selection">
                         <div className="nonogram-infos">{info}</div>
-                        <PageSelection changePage={(page) => this.changePage(page)} currentPage={this.state.currentPage} maxPage={this.state.maxPage}></PageSelection>
+                        <PageSelection changePage={(page) => this.changePage(page)} displayNumber={this.state.displayNumber} currentPage={this.state.currentPage}
+                                       maxPage={this.state.maxPage} changeDisplayNumber={() => this.changDisplauNumber()}></PageSelection>
                     </div>
                 )}
             </div>

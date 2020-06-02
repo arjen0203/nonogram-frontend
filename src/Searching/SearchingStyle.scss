@@ -7,6 +7,7 @@
     .nonogram-selection {
         display: flex;
         justify-content: center;
+        flex-direction: column;
         width: 90%;
         align-items: center;
         margin-top: 40px;
@@ -44,6 +45,43 @@
                 &:hover {
                     background-color: $silverSand;
                 }
+            }
+        }
+        .page-nav {
+            background-color: $silverSand;
+            padding: 10px;
+            border-radius: 8px;
+
+            .page-nav-button {
+                display: inline-block;
+                margin: 5px;
+                padding: 5px;
+                width: 26px;
+                height: 26px;
+                background-color: $blackCoral;
+                color: white;
+                cursor: pointer;
+                text-decoration: none;
+                border: none;
+                font-weight: bold;
+                text-align: center;
+                &:hover {
+                    background-color: $blackCoralLight;
+                }
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            .page-nav-input {
+                width: 25px;
+                padding: 4px;
+                text-align: right;
+                text-align: center;
+
+
             }
         }
     }
