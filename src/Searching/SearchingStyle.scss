@@ -1,0 +1,50 @@
+@import './../colors';
+
+.center {
+    justify-content: center;
+    display: flex;
+
+    .nonogram-selection {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        align-items: center;
+        margin-top: 40px;
+
+        .nonogram-infos {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            width: 100%;
+
+            .nonoogram-info {
+                margin: 1% 2.5% 1% 2.5%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 15%;
+                background-color: $silverSandLight;
+                padding: 2%;
+                border-radius: 20px;
+                border: 5px solid $silverSand;
+                cursor: pointer;
+                transition: 0.5s;
+
+                .gram-info-name {
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+                .gram-info-creater {
+                    font-style: italic;
+                    font-size: 18px;
+                }
+
+                &:hover {
+                    background-color: $silverSand;
+                }
+            }
+        }
+    }
+}
