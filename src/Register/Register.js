@@ -92,12 +92,12 @@ class Register extends Component {
             <div className="center">
                 <div className="register-fields">
                     <b className="register-title">Register:</b>
-                    <label>Username:</label>
-                    <input className="register-username-input" type="text" placeholder="Username" value={this.state.username} onChange={this.handleNameChange}></input>
-                    <label>Password:</label>
-                    <input className="register-password-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
-                    <label>Password repeat:</label>
-                    <input className="register-password-input" type="password" placeholder="Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
+                    <label for="username">Username:</label>
+                    <input id="username" className="register-username-input" type="text" placeholder="Username" value={this.state.username} onChange={this.handleNameChange}></input>
+                    <label for="password">Password:</label>
+                    <input id="password" className="register-password-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
+                    <label for="passwordRep">Password repeat:</label>
+                    <input id="passwordRep" className="register-password-input" type="password" placeholder="Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
                     <button className="register-submit-button" onClick={this.tryRegistrating}>Register</button>
                     <b className="register-error">{this.state.registerError}</b>
 

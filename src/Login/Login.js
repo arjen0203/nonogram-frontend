@@ -61,10 +61,10 @@ class Login extends Component {
                             <div className="center">
                                 <div className="login-fields">
                                     <b className="login-title">Login</b>
-                                    <label>Username:</label>
-                                    <input className="login-username-input" type="text" placeholder="Username" value={this.state.username} onChange={this.handleNameChange}></input>
-                                    <label>Password:</label>
-                                    <input className="login-username-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
+                                    <label for="username">Username:</label>
+                                    <input id="username" className="login-username-input" type="text" placeholder="Username" value={this.state.username} onChange={this.handleNameChange}></input>
+                                    <label for="password">Password:</label>
+                                    <input id="password" className="login-username-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
                                     <button className="login-submit-button" onClick={() => this.login(loginUser)}>Login</button>
                                     <b className="login-error">{this.state.loginError}</b>
                                     <Link className="to-register-link" to={'/register'}>Don't have an account yet? Register here.</Link>
