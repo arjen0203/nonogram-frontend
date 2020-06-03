@@ -6,9 +6,9 @@ class PageSelection extends Component {
             <div className="page-nav">
                 <button className="page-nav-button" onClick={() => this.props.changePage(0)}>{"<<"}</button>
                 <button className="page-nav-button" onClick={() => this.props.changePage(this.props.currentPage - 1)}>{"<"}</button>
-                <label for="pageSelect" > </label>
-                <input id="pageSelect" className="page-nav-input" type="number" value={this.props.displayNumber} onChange={(e) => this.props.changeDisplayNumber(e.target.value)} onBlur={(e) => this.props.changePage(e.target.value)}></input>
-                <label> </label>
+                <label>
+                <input className="page-nav-input" type="number" value={this.props.displayNumber} onChange={(e) => this.props.changeDisplayNumber(e.target.value)} onBlur={(e) => this.props.changePage(e.target.value)}></input>
+                </label>
                 <button className="page-nav-button" onClick={() => this.props.changePage(this.props.currentPage + 1)}>{">"}</button>
                 <button className="page-nav-button" onClick={() => this.props.changePage(this.props.maxPage)}>{">>"}</button>
             </div>
