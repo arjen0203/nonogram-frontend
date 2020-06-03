@@ -94,7 +94,7 @@ class App extends React.Component {
                   <nav>
                       <ul className="router-list">
                           <li><Link to={'/solving'}>Solving</Link></li>
-                          {this.state.user.userId !== 0 ? (<li><Link to={'/creating'}>Creating</Link></li>) : (<div></div>)}
+                          {this.state.user.userId !== 0 ? (<li><Link to={'/creating'}>Creating</Link></li>) : (<li></li>)}
                           {this.state.user.userId !== 0 ? (<li className="login-button"><div className="logout-button" onClick={this.logoutUser}>Logout</div></li>) : <li className="login-button"><Link to={'/login'}>Login</Link></li>}
                       </ul>
                   </nav>
