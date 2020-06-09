@@ -10,6 +10,7 @@ class Searching extends Component {
         const params = new URLSearchParams(document.location.search.substring(1));
 
         let page = params.get('page');
+        if (page === null) page = 0;
 
         this.state = {
             loading: false,
@@ -63,6 +64,7 @@ class Searching extends Component {
         const URL = 'https://nonograms.nl/api/nonogram/getAll?page=' + page;
         fetch(URL)
             .then( async res => {
+
                 if (res.ok) {
                     const maxPage = await res.headers.get("TotalPages");
                     res.json().then(data => {
@@ -74,6 +76,8 @@ class Searching extends Component {
                     this.setState({error});
                 }
             }).catch(() => this.setState({error: "Could not communicate with server"}));
+
+
     }
 
     changePage(page){
@@ -89,7 +93,7 @@ class Searching extends Component {
         let info;
         if (!this.state.loading) info = this.getInfoComps();
         return (
-            <div className="center">
+            <div data-testid="searching" className="center">
                 {this.state.loading ? (
                     <div>{this.state.error}</div>
                 ) : (

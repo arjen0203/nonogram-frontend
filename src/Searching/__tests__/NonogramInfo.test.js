@@ -33,7 +33,7 @@ it('Render correctly', function () {
 	expect(comp).toHaveTextContent("By: user123");
 });
 
-it('mathces snapshot', function () {
+it('matches snapshot', function () {
 	const mockInfo = {id: 5, name: "puzzle", creater: "rens"};
 
 	const tree = renderer.create(<NonogramInfo info={mockInfo}></NonogramInfo>).toJSON();
