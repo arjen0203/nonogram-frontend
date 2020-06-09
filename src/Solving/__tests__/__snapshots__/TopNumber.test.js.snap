@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="to-be-solved-top"
+  data-testid="topNumber"
+>
+  6
+</div>
+`;

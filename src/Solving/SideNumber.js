@@ -11,7 +11,7 @@ class SideNumber extends React.Component {
         }
 
         return (
-            <div className={styling}>{this.props.value.number}</div>
+            <div data-testid="sideNumber" className={styling}>{this.props.value.number}</div>
         );
     }
 }
