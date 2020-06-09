@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="center"
+>
+  <div
+    className="login-fields"
+  >
+    <b
+      className="login-title"
+    >
+      Login
+    </b>
+    <label
+      htmlFor="username"
+    >
+      Username:
+    </label>
+    <input
+      className="login-username-input"
+      id="username"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+      value="test123"
+    />
+    <label
+      htmlFor="password"
+    >
+      Password:
+    </label>
+    <input
+      className="login-username-input"
+      id="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value="test123"
+    />
+    <button
+      className="login-submit-button"
+      onClick={[Function]}
+    >
+      Login
+    </button>
+    <b
+      className="login-error"
+    />
+    <div
+      className="to-register-link"
+      to="/register"
+    >
+      Don't have an account yet? Register here.
+    </div>
+  </div>
+</div>
+`;

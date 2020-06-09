@@ -39,7 +39,10 @@ it('Render correctly', async function () {
 		).getByTestId("searching");
 	});
 
-	expect(comp).toHaveTextContent("Rens");
+	expect(comp).toHaveTextContent("By: Rens");
+	expect(comp).toHaveTextContent("Smoll puzzle");
+	expect(comp).toHaveTextContent("By: Freek");
+	expect(comp).toHaveTextContent("Big puzzle");
 });
 
 it('Render correctly', async function () {
@@ -66,6 +69,9 @@ it('Render correctly', async function () {
 	});
 
 	expect(comp).toHaveTextContent("AMAZING");
+	expect(comp).toHaveTextContent("By: Sjoerd");
+	expect(comp).toHaveTextContent("GREAT STUFF");
+	expect(comp).toHaveTextContent("By: User567");
 });
 
 it('matches snapshot', async function () {

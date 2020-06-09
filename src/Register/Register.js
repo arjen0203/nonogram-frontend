@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 import './RegisterStyle.scss';
 import {UserContext} from "../UserContext";
 
@@ -17,6 +16,7 @@ class Register extends Component {
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handlePasswordRepChange = this.handlePasswordRepChange.bind(this);
         this.tryRegistrating = this.tryRegistrating.bind(this);
+        this.goToLogin = this.goToLogin.bind(this);
     }
 
     tryRegistrating(){
@@ -87,21 +87,25 @@ class Register extends Component {
         this.setState({passwordRepeat: event.target.value});
     }
 
+    goToLogin(){
+        this.props.history.push("/login")
+    }
+
     render() {
         return (
             <div className="center">
                 <div className="register-fields">
                     <b className="register-title">Register:</b>
-                    <label for="username">Username:</label>
+                    <label htmlFor="username">Username:</label>
                     <input id="username" className="register-username-input" type="text" placeholder="Username" value={this.state.username} onChange={this.handleNameChange}></input>
-                    <label for="password">Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input id="password" className="register-password-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
-                    <label for="passwordRep">Password repeat:</label>
+                    <label htmlFor="passwordRep">Password repeat:</label>
                     <input id="passwordRep" className="register-password-input" type="password" placeholder="Password repeat" value={this.state.passwordRepeat} onChange={this.handlePasswordRepChange}></input>
                     <button className="register-submit-button" onClick={this.tryRegistrating}>Register</button>
                     <b className="register-error">{this.state.registerError}</b>
 
-                    <Link className="to-login-link" to={'/login'}>Already have an account? Login here.</Link>
+                    <div onClick={this.goToLogin} className="to-login-link">Already have an account? Login here.</div>
                 </div>
                 <UserContext.Consumer>
                     {({user, logoutUser, loginUser}) => {if (user.userId !== 0) this.props.history.push('/solving')}}
