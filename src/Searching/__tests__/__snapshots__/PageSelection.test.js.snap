@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="page-nav"
+  data-testid="pageSelect"
+>
+  <button
+    className="page-nav-button"
+    onClick={[Function]}
+  >
+    &lt;&lt;
+  </button>
+  <button
+    className="page-nav-button"
+    onClick={[Function]}
+  >
+    &lt;
+  </button>
+  <label>
+    <input
+      className="page-nav-input"
+      data-testid="pageInput"
+      onBlur={[Function]}
+      onChange={[Function]}
+      type="number"
+      value={1}
+    />
+  </label>
+  <button
+    className="page-nav-button"
+    onClick={[Function]}
+  >
+    &gt;
+  </button>
+  <button
+    className="page-nav-button"
+    onClick={[Function]}
+  >
+    &gt;&gt;
+  </button>
+</div>
+`;

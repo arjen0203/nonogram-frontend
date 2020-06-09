@@ -11,7 +11,7 @@ class TopNumber extends React.Component {
         }
 
         return (
-            <div className={styling}>{this.props.value.number}</div>
+            <div data-testid="topNumber" className={styling}>{this.props.value.number}</div>
         );
     }
 }

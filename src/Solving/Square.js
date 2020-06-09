@@ -10,7 +10,7 @@ class Square extends React.Component {
             display = "✖";
         }
         return (
-            <div
+            <div data-testid="square"
                 className={styling}
                 onMouseDown={(e) => this.props.onMouseDown(e)}
                 onContextMenu={(e) => this.props.onContextMenu(e)}

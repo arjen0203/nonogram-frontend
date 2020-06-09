@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="center"
+>
+  <div
+    className="options"
+    data-testid="options"
+  >
+    <label
+      htmlFor="name"
+    >
+      Name: 
+    </label>
+    <input
+      className="name-input"
+      data-testid="optName"
+      id="name"
+      onChange={[Function]}
+      type="text"
+    />
+    <div
+      className="name-warning"
+    />
+    <div>
+      <label
+        htmlFor="width"
+      >
+        Width:
+      </label>
+      <input
+        className="size-input"
+        data-testid="optHeight"
+        id="width"
+        max="30"
+        min="1"
+        onChange={[Function]}
+        type="number"
+      />
+      <label
+        htmlFor="height"
+      >
+        Height:
+      </label>
+      <input
+        className="size-input"
+        data-testid="optWidth"
+        id="height"
+        max="30"
+        min="1"
+        onChange={[Function]}
+        type="number"
+      />
+    </div>
+    <div
+      className="size-warning"
+    />
+    <button
+      className="save-button"
+      onClick={[Function]}
+    >
+      Save nonogram
+    </button>
+    <div
+      className="save-state"
+    />
+  </div>
+</div>
+`;

@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 
 class DrawSquare extends Component {
     render() {
+        let style;
         if (this.props.value === 1){
-            var filled = { backgroundColor: '#35393C'};
+            style = "draw-square-filled"
+        } else {
+            style = "draw-square";
         }
         return (
-            <div className="draw-square"
-                 style={filled}
+            <div data-testid="drawSquare"
+                 className={style}
                  onMouseDown={(e) => this.props.onMouseDown(e)}
                  onMouseEnter={(e) => this.props.onMouseEnter(e)}
             >

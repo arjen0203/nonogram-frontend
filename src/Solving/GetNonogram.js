@@ -72,7 +72,7 @@ class GetNonogram extends React.Component {
 
     render() {
         return (
-            <div>
+            <div data-testid="getNonogram">
                 {this.state.loading ? (
                     <div>{this.state.error}</div>
                     ) : (

@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="center"
+  data-testid="searching"
+>
+  <div
+    className="nonogram-selection"
+  >
+    <div
+      className="nonogram-infos"
+    >
+      <div
+        className="nonoogram-info"
+        data-testid="nonoInfo"
+        onClick={[Function]}
+      >
+        <div
+          className="gram-info-name"
+        >
+          Big puzzle
+        </div>
+        <div
+          className="gram-info-creater"
+        >
+          By: 
+          Rens
+        </div>
+      </div>
+      <div
+        className="nonoogram-info"
+        data-testid="nonoInfo"
+        onClick={[Function]}
+      >
+        <div
+          className="gram-info-name"
+        >
+          Smoll puzzle
+        </div>
+        <div
+          className="gram-info-creater"
+        >
+          By: 
+          Freek
+        </div>
+      </div>
+    </div>
+    <div
+      className="page-nav"
+      data-testid="pageSelect"
+    >
+      <button
+        className="page-nav-button"
+        onClick={[Function]}
+      >
+        &lt;&lt;
+      </button>
+      <button
+        className="page-nav-button"
+        onClick={[Function]}
+      >
+        &lt;
+      </button>
+      <label>
+        <input
+          className="page-nav-input"
+          data-testid="pageInput"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="number"
+          value={1}
+        />
+      </label>
+      <button
+        className="page-nav-button"
+        onClick={[Function]}
+      >
+        &gt;
+      </button>
+      <button
+        className="page-nav-button"
+        onClick={[Function]}
+      >
+        &gt;&gt;
+      </button>
+    </div>
+  </div>
+</div>
+`;

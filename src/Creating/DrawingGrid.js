@@ -19,7 +19,7 @@ class DrawingGrid extends Component {
     render() {
         return (
             <div className="center">
-                <div className="drawing-grid">
+                <div data-testid="drawingGrid" className="drawing-grid">
                     {this.createGrid()}
                 </div>
             </div>

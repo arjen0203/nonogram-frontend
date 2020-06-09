@@ -198,7 +198,7 @@ class Creating extends React.Component {
 
     render() {
         return (
-            <div>
+            <div data-testid="creating" className="creating">
                     <Options changeWidth={(e) => this.changeWidth(e)} changeHeight={(e) => this.changeHeight(e)} changeName={(e) => this.changeName(e)}
                              width={this.state.width} height={this.state.height} name={this.state.name} saveNonogram={() => this.saveNonogram()}
                             sizeWarning={this.state.sizeWarning} nameWarning={this.state.nameWarning}></Options>

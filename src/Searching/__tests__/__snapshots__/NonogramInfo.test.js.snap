@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="nonoogram-info"
+  data-testid="nonoInfo"
+  onClick={[Function]}
+>
+  <div
+    className="gram-info-name"
+  >
+    puzzle
+  </div>
+  <div
+    className="gram-info-creater"
+  >
+    By: 
+    rens
+  </div>
+</div>
+`;
