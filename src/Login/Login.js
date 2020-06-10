@@ -14,6 +14,7 @@ class Login extends Component {
 
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.toRegiter = this.toRegiter.bind(this);
     }
 
     handleNameChange(event){
@@ -48,6 +49,9 @@ class Login extends Component {
                 }
             }).catch(() => this.setState({loginError: "Could not communicate with server"}));
     }
+    toRegiter(){
+        this.props.history.push("/register");
+    }
 
     render() {
         return (
@@ -67,7 +71,7 @@ class Login extends Component {
                                     <input id="password" className="login-username-input" type="password" placeholder="Password" value={this.state.password} onChange={this.handlePasswordChange}></input>
                                     <button className="login-submit-button" onClick={() => this.login(loginUser)}>Login</button>
                                     <b className="login-error">{this.state.loginError}</b>
-                                    <div className="to-register-link" to={'/register'}>Don't have an account yet? Register here.</div>
+                                    <div className="to-register-link" onClick={this.toRegiter}>Don't have an account yet? Register here.</div>
                                 </div>
                             </div>
                         )
