@@ -45,7 +45,7 @@ class Login extends Component {
                     this.props.history.push('/');
                 }
                 else{
-                    this.setState({loginError: res.text() });
+                    this.setState({loginError: "Could not login, credentials are not correct" });
                 }
             }).catch(() => this.setState({loginError: "Could not communicate with server"}));
     }
